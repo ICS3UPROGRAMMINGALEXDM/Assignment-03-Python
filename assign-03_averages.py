@@ -8,10 +8,7 @@ import colorama
 from colorama import Fore, Style
 
 
-def ()
-
-
-def main():
+def calculate():
     while True:
         # Getting user input
         num1 = input(Style.BRIGHT + Fore.WHITE + "Enter your first number: ").strip()
@@ -42,6 +39,7 @@ def main():
                     + "The average of your three numbers is {:.2f}".format(average)
                 )
 
+                # Loop for error checking user answer if they'd like to calculate again
                 while True:
                     answer = (
                         input(Fore.WHITE + "Would you like to play again? (y/n): ")
@@ -49,6 +47,7 @@ def main():
                         .strip()
                     )
 
+                    # if statement for the user answer
                     if answer == "y":
                         print(Fore.GREEN + "Okay")
                         break
@@ -60,11 +59,19 @@ def main():
             else:
                 print(Fore.RED + "Please make sure your numbers are between 0-100")
 
-            if answer == "n":
-                break
+            try:
+                # Ends program after everythings complete and user enter "n"
+                if answer == "n":
+                    break
+            except NameError:
+                print("")
 
         except ValueError:
             print(Fore.RED + "Invalid input, try again!")
+
+
+def main():
+    calculate()
 
 
 if __name__ == "__main__":
